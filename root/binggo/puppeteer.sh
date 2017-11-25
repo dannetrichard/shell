@@ -56,13 +56,10 @@ async.eachSeries(items, crawler, (err) => {
     console.log(err);
 });
 EOF
-npm i - g eslint
-npm i - g eslint-config-airbnb
-cat>.eslintrc<<EOF
-{  
-    "extends": "eslint-config-airbnb"  
-}
-EOF 
+
+npm i -g eslint --save-dev
+eslint --init
+
 npm i --save puppeteer 
 cd
 #注意解决中文字体
