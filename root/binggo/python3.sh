@@ -27,7 +27,7 @@ ln -s /usr/local/bin/pip3.5 /usr/bin/pip3
 #修改urlgrabber配置文件
 #sed -i 's/python/python2/g' /usr/libexec/urlgrabber-ext-down
 cd
-//安装virtualenv、tensorflow
+#安装virtualenv、tensorflow
 		
 pip3 install virtualenv
 cd /data
