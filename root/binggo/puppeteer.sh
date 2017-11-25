@@ -37,11 +37,11 @@ async function crawler(itemId, callback) {
     Connection: 'keep-alive',
     'Accept-Encoding': 'gzip, deflate',
     'Accept-Language': 'zh-cn',
-    Referer: `http://h5.m.taobao.com/awp/core/detail.htm?id=${itemId}`,
+    Referer: 'http://h5.m.taobao.com/awp/core/detail.htm?id=${itemId}',
   };
 
   await page.setExtraHTTPHeaders(customHeaders);
-  const url = `http://h5api.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B%22exParams%22%3A%22%7B%5C%22id%5C%22%3A%5C%22${itemId}%5C%22%7D%22%2C%22itemNumId%22%3A%22${itemId}%22%7D`;
+  const url = 'http://h5api.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B%22exParams%22%3A%22%7B%5C%22id%5C%22%3A%5C%22${itemId}%5C%22%7D%22%2C%22itemNumId%22%3A%22${itemId}%22%7D';
   await page.goto(url);
 
   const aHandle = await page.evaluateHandle(() => document.body);
