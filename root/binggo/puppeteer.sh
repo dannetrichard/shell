@@ -57,7 +57,8 @@ async.eachSeries(items, crawler, (err) => {
 });
 EOF
 
-npm i -g eslint --save-dev
+npm install -g eslint
+npm install --save-dev eslint-config-standard eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node -g
 eslint --init
 
 npm i --save puppeteer 
