@@ -62,5 +62,6 @@ npm install --save-dev eslint-config-standard eslint-plugin-standard eslint-plug
 eslint --init
 
 npm i --save puppeteer 
+npm i --save async
 cd
 #注意解决中文字体
