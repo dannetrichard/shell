@@ -18,8 +18,12 @@ function composer_install(){
     composer config -g repo.packagist composer https://packagist.phpcomposer.com
     return 1
 }
-
+function reset_db_password(){
+    cd /root/oneinstack
+    ./reset_db_root_password.sh
+}
 
 php_version
 update_disable_function
 composer_install
+reset_db_password
