@@ -15,9 +15,9 @@ function install_lumen(){
     chmod -R 777 storage
     sed -i 's/UTC/Asia\/Shanghai\nAPP_ID=wxa02ce99b50401101\nAPP_SECRET=5c9e00d42a74132b5f153c49c8f32be6/g' .env
     
-    sed -i 's/DB_DATABASE=homestead/DB_DATABASE=tiger/g' .env
+    sed -i 's/DB_DATABASE=homestead/DB_DATABASE='$1'/g' .env
     sed -i 's/DB_USERNAME=homestead/DB_USERNAME=root/g' .env
-    sed -i 's/DB_PASSWORD=secret/DB_PASSWORD=KeYpZrZx/g' .env 
+    sed -i 's/DB_PASSWORD=secret/DB_PASSWORD=jinjun123/g' .env 
  
     composer dump-autoload
 }
