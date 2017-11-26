@@ -17,7 +17,7 @@ yum install -y pango.x86_64 libXcomposite.x86_64 libXcursor.x86_64 libXdamage.x8
 #https://storage.googleapis.com/chromium-browser-snapshots/Linux_x64/515411/chrome-linux.zip
 
 #/data/ptr/node_modules/puppeteer/.local-chromium/linux-515411
-
+#`$需要转义,加\就行
 cat>product.js<<EOF
 const async = require('async');
 const puppeteer = require('puppeteer');
@@ -37,11 +37,11 @@ async function crawler(itemId, callback) {
     Connection: 'keep-alive',
     'Accept-Encoding': 'gzip, deflate',
     'Accept-Language': 'zh-cn',
-    Referer: 'http://h5.m.taobao.com/awp/core/detail.htm?id=${itemId}',
+    Referer: \`http://h5.m.taobao.com/awp/core/detail.htm?id=\${itemId}\`,
   };
 
   await page.setExtraHTTPHeaders(customHeaders);
-  const url = 'http://h5api.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B%22exParams%22%3A%22%7B%5C%22id%5C%22%3A%5C%22${itemId}%5C%22%7D%22%2C%22itemNumId%22%3A%22${itemId}%22%7D';
+  const url = \`http://h5api.m.taobao.com/h5/mtop.taobao.detail.getdetail/6.0/?data=%7B%22exParams%22%3A%22%7B%5C%22id%5C%22%3A%5C%22${itemId}%5C%22%7D%22%2C%22itemNumId%22%3A%22\${itemId}%22%7D\`;
   await page.goto(url);
 
   const aHandle = await page.evaluateHandle(() => document.body);
