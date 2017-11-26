@@ -15,6 +15,8 @@ function install_laravel(){
     chmod -R 777 storage
     chmod -R 777 bootstrap/cache
     
+    sed -i 's/utf8mb4/utf8/g' config/database.php
+
     sed -i 's/DB_DATABASE=homestead/DB_DATABASE='$1'/g' .env
     sed -i 's/DB_USERNAME=homestead/DB_USERNAME=root/g' .env
     sed -i 's/DB_PASSWORD=secret/DB_PASSWORD=jinjun123/g' .env        
