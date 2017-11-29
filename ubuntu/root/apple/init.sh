@@ -42,9 +42,9 @@ sudo apt-get install mysql-server -y
 sudo apt-get install software-properties-common -y
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update -y
-sudo apt-get install php7.1 php7.1-cli php7.1-common php7.1-json php7.1-opcache php7.1-mysql php7.1-mbstring php7.1-mcrypt php7.1-zip php7.1-fpm -y
+sudo apt-get install php7.1 php7.1-cli php7.1-common php7.1-json php7.1-opcache php7.1-mysql php7.1-mbstring php7.1-mcrypt php7.1-zip php7.1-fpm php-xml -y
 sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.1/cli/php.ini
-sudo systemctl restart php7.1-fpm
+sudo systemctl restart php7.1-fpm.service
 
 #composer
 curl -sS https://getcomposer.org/installer | php
@@ -60,12 +60,12 @@ cat >/etc/nginx/sites-available/tiger.jingyi-good.com <<EOF
 server {
         listen 80;
         server_name tiger.jingyi-good.com;
-        root /data/www/tiger.jingyi-good.com/laravel;
+        root /data/www/tiger.jingyi-good.com/laravel/public;
         index index.php;
 
         location / {
-                try_files $uri $uri/ =404;
-        }
+            try_files $uri $uri/ /index.php?$query_string;
+        }   
 
         location ~ \.php$ {
             fastcgi_pass unix:/run/php/php7.1-fpm.sock;
@@ -80,4 +80,7 @@ server {
 EOF
 sudo ln -s /etc/nginx/sites-available/tiger.jingyi-good.com /etc/nginx/sites-enabled/tiger.jingyi-good.com
 sudo nginx -t
-sudo systemctl restart nginx
+sudo systemctl restart nginx.service
+
+sudo systemctl enable nginx.service
+sudo systemctl enable php7.1-fpm.service
